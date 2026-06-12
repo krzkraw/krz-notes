@@ -119,14 +119,14 @@ Notes:
 Search/download:
 
 ```text
-Mungert/Qwen3-Embedding-0.6B-GGUF
-Qwen3-Embedding-0.6B-q4_k_m.gguf
+andquant/Qwen3-Embedding-0.6B-Q4_K_M-GGUF
+qwen3-embedding-0.6b-q4_k_m.gguf
 ```
 
 Notes:
 
 - Use when Q8 and Q5 leave too little VRAM.
-- About 395 MB model weights.
+- About 396 MB model weights.
 
 ## Reranker
 

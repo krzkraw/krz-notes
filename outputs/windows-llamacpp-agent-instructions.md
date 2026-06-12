@@ -143,11 +143,11 @@ Tier 2, balanced VRAM:
 
 Tier 3, emergency VRAM:
 
-- Embedding repo: `Mungert/Qwen3-Embedding-0.6B-GGUF`
-- Embedding file: `Qwen3-Embedding-0.6B-q4_k_m.gguf`
+- Embedding repo: `andquant/Qwen3-Embedding-0.6B-Q4_K_M-GGUF`
+- Embedding file: `qwen3-embedding-0.6b-q4_k_m.gguf`
 - Reranker repo: `Voodisss/Qwen3-Reranker-0.6B-GGUF-llama_cpp`
 - Reranker file: `Qwen3-Reranker-0.6B-Q3_K_M.gguf`
-- Weights total: about 742 MB
+- Weights total: about 743 MB
 - Use only if Tier 2 fails on VRAM
 
 ## 3. VRAM Diagnostics
