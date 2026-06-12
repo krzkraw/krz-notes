@@ -22,13 +22,13 @@ Estimated budget:
 - Practical VRAM: about 1.6-1.9 GB with `ctx=2048`
 - With `ctx=4096`, add roughly 250-400 MB
 
-## Pick 2: VRAM Saver
+## Pick 2: Balanced VRAM
 
 Embedding:
 
-- Repo: `Mungert/Qwen3-Embedding-0.6B-GGUF`
-- File: `Qwen3-Embedding-0.6B-q4_k_m.gguf`
-- Size: about 395 MB
+- Repo: `majentik/Qwen3-Embedding-0.6B-GGUF-Q5_K_M`
+- File: `qwen3-emb-0.6b-Q5_K_M.gguf`
+- Size: about 424-444 MB
 
 Reranker:
 
@@ -38,8 +38,8 @@ Reranker:
 
 Estimated budget:
 
-- Model weights: about 791 MB
-- Practical VRAM: about 1.2-1.55 GB with `ctx=2048`
+- Model weights: about 820-840 MB
+- Practical VRAM: about 1.25-1.6 GB with `ctx=2048`
 - Better margin for `ctx=4096`
 
 ## Main Model: Summary And Wiki Page Synthesis

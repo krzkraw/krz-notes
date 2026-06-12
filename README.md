@@ -99,7 +99,22 @@ Notes:
 - Preferred embedding model.
 - About 639 MB model weights.
 
-### Option 2: VRAM Saver
+### Option 2: Balanced
+
+Search/download:
+
+```text
+majentik/Qwen3-Embedding-0.6B-GGUF-Q5_K_M
+qwen3-emb-0.6b-Q5_K_M.gguf
+```
+
+Notes:
+
+- Preferred balanced embedding option.
+- About 424-444 MB model weights.
+- Better quality margin than Q4 with modest extra VRAM.
+
+### Option 3: VRAM Saver
 
 Search/download:
 
@@ -110,22 +125,8 @@ Qwen3-Embedding-0.6B-q4_k_m.gguf
 
 Notes:
 
-- Use when the Q8 embedding leaves too little VRAM.
+- Use when Q8 and Q5 leave too little VRAM.
 - About 395 MB model weights.
-
-### Option 3: Emergency VRAM
-
-Search/download:
-
-```text
-Mungert/Qwen3-Embedding-0.6B-GGUF
-Qwen3-Embedding-0.6B-q3_k_m.gguf
-```
-
-Notes:
-
-- Last resort for memory pressure.
-- Expect possible retrieval quality loss.
 
 ## Reranker
 
@@ -182,10 +183,10 @@ embedding: Qwen/Qwen3-Embedding-0.6B-GGUF / Qwen3-Embedding-0.6B-Q8_0.gguf
 reranker:  Voodisss/Qwen3-Reranker-0.6B-GGUF-llama_cpp / Qwen3-Reranker-0.6B-Q4_K_M.gguf
 ```
 
-VRAM saver retrieval:
+Balanced retrieval:
 
 ```text
-embedding: Mungert/Qwen3-Embedding-0.6B-GGUF / Qwen3-Embedding-0.6B-q4_k_m.gguf
+embedding: majentik/Qwen3-Embedding-0.6B-GGUF-Q5_K_M / qwen3-emb-0.6b-Q5_K_M.gguf
 reranker:  Voodisss/Qwen3-Reranker-0.6B-GGUF-llama_cpp / Qwen3-Reranker-0.6B-Q4_K_M.gguf
 ```
 
