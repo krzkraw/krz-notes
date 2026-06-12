@@ -16,14 +16,74 @@ Hard rule:
   - Retrieval mode: embedding server + reranker server may run together.
   - Generation mode: main model server runs alone.
 
-## 1. Install Locally Into The Repo
+## 1. Install llama.cpp Locally Into The Repo
 
 Use PowerShell.
 
-Required system software:
+Important:
+
+- Do not build Ollama. Ollama is a different runtime.
+- Do not build `llama.cpp` by default.
+- Prefer the official prebuilt `llama.cpp` Windows CUDA release.
+- Build from source only if the prebuilt binary fails or a specific unreleased `llama.cpp` commit is required.
+
+Required system software for the prebuilt path:
 
 - NVIDIA driver with working `nvidia-smi`
 - Git for Windows
+- PowerShell
+- 7-Zip or PowerShell `Expand-Archive`
+
+Check prerequisites:
+
+```powershell
+nvidia-smi
+git --version
+```
+
+### Preferred: Prebuilt llama.cpp CUDA Release
+
+Download from:
+
+```text
+https://github.com/ggml-org/llama.cpp/releases
+```
+
+Use the latest Windows x64 CUDA 12 artifacts:
+
+- Windows x64 CUDA 12 binary zip
+- CUDA 12 DLLs zip, if released separately
+
+Extract them into:
+
+```powershell
+mkdir .\vendor -Force
+mkdir .\vendor\llama.cpp-bin -Force
+```
+
+After extraction, find `llama-server.exe`:
+
+```powershell
+Get-ChildItem .\vendor\llama.cpp-bin -Recurse -Filter llama-server.exe
+```
+
+Set `$LLAMA` to the discovered path. Example:
+
+```powershell
+$LLAMA = ".\vendor\llama.cpp-bin\llama-server.exe"
+& $LLAMA --help
+```
+
+If `llama-server.exe` is inside a nested folder, use the exact discovered path instead.
+
+Expected release types are listed on the official `llama.cpp` releases page, including Windows x64 CPU, Windows x64 CUDA 12, Windows x64 CUDA 13, Vulkan, and other backends.
+
+### Fallback: Build llama.cpp From Source
+
+Build only if the prebuilt CUDA release does not work.
+
+Additional requirements:
+
 - CMake
 - Visual Studio Build Tools 2022 with:
   - Desktop development with C++
@@ -32,11 +92,9 @@ Required system software:
   - CMake tools for Windows
 - NVIDIA CUDA Toolkit 12.x
 
-Check prerequisites:
+Check build prerequisites:
 
 ```powershell
-nvidia-smi
-git --version
 cmake --version
 where cl
 nvcc --version
@@ -44,7 +102,7 @@ nvcc --version
 
 If `where cl` fails, run commands from "Developer PowerShell for VS 2022".
 
-Clone and build `llama.cpp` inside the project repo:
+Build CUDA:
 
 ```powershell
 mkdir .\vendor -Force
@@ -58,30 +116,15 @@ cmake -S .\vendor\llama.cpp `
 cmake --build .\vendor\llama.cpp\build --config Release -j
 ```
 
-Expected binary:
+Expected built binary:
 
 ```powershell
 .\vendor\llama.cpp\build\bin\Release\llama-server.exe --help
 ```
 
-If CUDA build fails, build CPU-only as fallback:
-
-```powershell
-cmake -S .\vendor\llama.cpp `
-  -B .\vendor\llama.cpp\build-cpu `
-  -DLLAMA_CURL=ON
-
-cmake --build .\vendor\llama.cpp\build-cpu --config Release -j
-```
-
-Expected CPU fallback binary:
-
-```powershell
-.\vendor\llama.cpp\build-cpu\bin\Release\llama-server.exe --help
-```
-
 Primary sources:
 
+- `llama.cpp` releases: https://github.com/ggml-org/llama.cpp/releases
 - `llama.cpp` build docs: https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md
 - `llama-server` docs: https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md
 
@@ -190,7 +233,7 @@ Do not claim a model fits until the server is running and a test request complet
 Set paths in PowerShell before launching:
 
 ```powershell
-$LLAMA = ".\vendor\llama.cpp\build\bin\Release\llama-server.exe"
+$LLAMA = ".\vendor\llama.cpp-bin\llama-server.exe"
 
 $MODELS_ROOT = "$env:USERPROFILE\.lmstudio\models"
 
@@ -199,7 +242,7 @@ $RERANK_MODEL = "$MODELS_ROOT\Voodisss\Qwen3-Reranker-0.6B-GGUF-llama_cpp\Qwen3-
 $MAIN_MODEL = "$MODELS_ROOT\unsloth\Qwen3.5-2B-GGUF\Qwen3.5-2B-Q4_K_M.gguf"
 ```
 
-For every listed model path, see `outputs/windows-model-paths.md`.
+For every listed model path, see `windows-model-paths.md`.
 
 Verify selected paths:
 
@@ -375,7 +418,7 @@ Generation prompt constraints:
 
 ## 6. Operational Rules
 
-Use CUDA build first. Use CPU build only as fallback.
+Use the prebuilt CUDA `llama.cpp` release first. Build from source only as fallback.
 
 On MX550:
 

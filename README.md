@@ -233,7 +233,7 @@ Example:
 
 Full PowerShell path list:
 
-- `outputs/windows-model-paths.md`
+- `windows-model-paths.md`
 
 ## Runtime Notes
 
@@ -265,6 +265,6 @@ rerank final top: 5-8
 
 See also:
 
-- `outputs/llm-wiki-model-picks.md`
-- `outputs/windows-model-paths.md`
-- `outputs/windows-llamacpp-agent-instructions.md`
+- `llm-wiki-model-picks.md`
+- `windows-model-paths.md`
+- `windows-llamacpp-agent-instructions.md`
