@@ -146,7 +146,22 @@ Notes:
 - Preferred default.
 - About 396 MB model weights.
 
-### Option 2: Higher Quality If VRAM Allows
+### Option 2: Balanced Upgrade
+
+Search/download:
+
+```text
+Voodisss/Qwen3-Reranker-0.6B-GGUF-llama_cpp
+Qwen3-Reranker-0.6B-Q5_K_M.gguf
+```
+
+Notes:
+
+- About 444 MB model weights.
+- Better quality margin than Q4 with small extra VRAM.
+- Prefer this if retrieval mode still has headroom.
+
+### Option 3: Highest Quality If VRAM Allows
 
 Search/download:
 
@@ -160,7 +175,7 @@ Notes:
 - About 639 MB model weights.
 - Use only if retrieval mode still fits in VRAM.
 
-### Option 3: Emergency VRAM
+### Option 4: Emergency VRAM
 
 Search/download:
 
@@ -187,7 +202,7 @@ Balanced retrieval:
 
 ```text
 embedding: majentik/Qwen3-Embedding-0.6B-GGUF-Q5_K_M / qwen3-emb-0.6b-Q5_K_M.gguf
-reranker:  Voodisss/Qwen3-Reranker-0.6B-GGUF-llama_cpp / Qwen3-Reranker-0.6B-Q4_K_M.gguf
+reranker:  Voodisss/Qwen3-Reranker-0.6B-GGUF-llama_cpp / Qwen3-Reranker-0.6B-Q5_K_M.gguf
 ```
 
 Main generation:

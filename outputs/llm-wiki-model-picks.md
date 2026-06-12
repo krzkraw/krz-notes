@@ -33,13 +33,13 @@ Embedding:
 Reranker:
 
 - Repo: `Voodisss/Qwen3-Reranker-0.6B-GGUF-llama_cpp`
-- File: `Qwen3-Reranker-0.6B-Q4_K_M.gguf`
-- Size: about 396 MB
+- File: `Qwen3-Reranker-0.6B-Q5_K_M.gguf`
+- Size: about 444 MB
 
 Estimated budget:
 
-- Model weights: about 820-840 MB
-- Practical VRAM: about 1.25-1.6 GB with `ctx=2048`
+- Model weights: about 868-888 MB
+- Practical VRAM: about 1.3-1.65 GB with `ctx=2048`
 - Better margin for `ctx=4096`
 
 ## Main Model: Summary And Wiki Page Synthesis

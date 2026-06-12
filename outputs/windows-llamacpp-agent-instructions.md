@@ -137,9 +137,9 @@ Tier 2, balanced VRAM:
 - Embedding repo: `majentik/Qwen3-Embedding-0.6B-GGUF-Q5_K_M`
 - Embedding file: `qwen3-emb-0.6b-Q5_K_M.gguf`
 - Reranker repo: `Voodisss/Qwen3-Reranker-0.6B-GGUF-llama_cpp`
-- Reranker file: `Qwen3-Reranker-0.6B-Q4_K_M.gguf`
-- Weights total: about 820-840 MB
-- Expected VRAM: about 1.25-1.6 GB with `ctx=2048`
+- Reranker file: `Qwen3-Reranker-0.6B-Q5_K_M.gguf`
+- Weights total: about 868-888 MB
+- Expected VRAM: about 1.3-1.65 GB with `ctx=2048`
 
 Tier 3, emergency VRAM:
 
