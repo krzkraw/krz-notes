@@ -211,6 +211,30 @@ Main generation:
 main: unsloth/Qwen3.5-2B-GGUF / Qwen3.5-2B-Q4_K_M.gguf
 ```
 
+## Windows Path Layout
+
+Expected model directory layout:
+
+```text
+<MODELS_ROOT>\<hf-owner-or-org>\<hf-repo-name>\<gguf-file>
+```
+
+Typical LM Studio root:
+
+```text
+%USERPROFILE%\.lmstudio\models
+```
+
+Example:
+
+```text
+%USERPROFILE%\.lmstudio\models\Voodisss\Qwen3-Reranker-0.6B-GGUF-llama_cpp\Qwen3-Reranker-0.6B-Q4_K_M.gguf
+```
+
+Full PowerShell path list:
+
+- `outputs/windows-model-paths.md`
+
 ## Runtime Notes
 
 Default `llama.cpp` starting points:
@@ -242,4 +266,5 @@ rerank final top: 5-8
 See also:
 
 - `outputs/llm-wiki-model-picks.md`
+- `outputs/windows-model-paths.md`
 - `outputs/windows-llamacpp-agent-instructions.md`

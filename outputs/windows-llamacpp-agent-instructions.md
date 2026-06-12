@@ -192,9 +192,25 @@ Set paths in PowerShell before launching:
 ```powershell
 $LLAMA = ".\vendor\llama.cpp\build\bin\Release\llama-server.exe"
 
-$EMBED_MODEL = "C:\path\to\Qwen3-Embedding-0.6B-Q8_0.gguf"
-$RERANK_MODEL = "C:\path\to\Qwen3-Reranker-0.6B-Q4_K_M.gguf"
-$MAIN_MODEL = "C:\path\to\Qwen3.5-2B-Q4_K_M.gguf"
+$MODELS_ROOT = "$env:USERPROFILE\.lmstudio\models"
+
+$EMBED_MODEL = "$MODELS_ROOT\Qwen\Qwen3-Embedding-0.6B-GGUF\Qwen3-Embedding-0.6B-Q8_0.gguf"
+$RERANK_MODEL = "$MODELS_ROOT\Voodisss\Qwen3-Reranker-0.6B-GGUF-llama_cpp\Qwen3-Reranker-0.6B-Q4_K_M.gguf"
+$MAIN_MODEL = "$MODELS_ROOT\unsloth\Qwen3.5-2B-GGUF\Qwen3.5-2B-Q4_K_M.gguf"
+```
+
+For every listed model path, see `outputs/windows-model-paths.md`.
+
+Verify selected paths:
+
+```powershell
+@($EMBED_MODEL, $RERANK_MODEL, $MAIN_MODEL) | ForEach-Object {
+  if (-not (Test-Path $_)) {
+    Write-Error "Missing model file: $_"
+  } else {
+    Write-Host "OK: $_"
+  }
+}
 ```
 
 ### Retrieval Mode
